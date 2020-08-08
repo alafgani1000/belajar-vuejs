@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Vue 006</title>
+    
+</head>
+<body>
+    <div id="app">
+        <h1>{{ pesanHeader }} dibalik jadi : {{ balikPesanHeader }}</h1>
+
+        <h2>Kota di Indonesia</h2>
+        <ul>
+            <li v-for="kota in listKota">{{ kota.namaKota }}</li>
+        </ul>
+
+        <h2>Kota di Pulau Sulawesi</h2>
+        <ul>
+            <li v-for="kota in listKota" v-if="kota.diSulawesi">{{ kota.namaKota }}</li>
+        </ul>
+
+        <h2>Kota di Luar Pulau Sulawesi</h2>
+        <ul>
+            <li v-for="kota in kotaDiSulawesi">{{ kota.namaKota }}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue ({    
+            el: '#app',
+            data: {
+                pesanHeader: 'Halo Vue',
+                listKota: [
+                    { namaKota: 'Kendari', diSulawesi: true },
+                    { namaKota: 'Jogja', diSulawesi: false },
+                    { namaKota: 'Surabaya', diSulawesi: false },
+                    { namaKota: 'Makassar', diSulawesi: true },
+                    { namaKota: 'Bandung', diSulawesi: false },
+                    { namaKota: 'Semarang', diSulawesi: false },
+                    { namaKota: 'Manado', diSulawesi: true },
+                ]
+            },
+            computed: {
+
+                balikPesanHeader() {
+                    return this.pesanHeader.split('').reverse().join('');
+                },
+
+                kotaDiSulawesi() {
+                    return this.listKota.filter(kota => !kota.diSulawesi);
+                }
+
+            }
+        });
+    </script>
+</body>
+</html>

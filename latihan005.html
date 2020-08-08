@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Vue 003</title>
+    <style>
+        .header-red {
+            color: red;
+        }
+
+        .header-green {
+            color: green;
+        }
+
+        .header-yellow {
+            color: yellow;
+        }
+
+        .header-black {
+            color:black;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div>
+        <h1>Tooltip  Attribute Binding</h1>
+        <a href="#" onclick="return false;" v-bind:title="tooltip">Arahkan mouse disini</a>
+    </div>
+    <div>
+        <h1 v-bind:class="headerClass">Class Binding </h1>
+
+        <a href="#" onclick="return false;" @mouseover="gantiWarnaHeader('red')">Ganti Merah</a>
+    </div>
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            headerClass: 'header-black',
+            tooltip: 'test tooltip'
+        },
+        methods: {
+            gantiWarnaHeader(warna){
+                this.headerClass = 'header-'+warna;
+            }
+        }
+    });
+</script>
+</body>
+</html>

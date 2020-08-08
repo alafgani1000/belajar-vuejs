@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>Latihan 006 computed vue js</title>
+    </head>
+    <body>
+        <div id="app">
+            <h3>{{ pesanHeader }} dibalik jadi {{ balikPesanHeader }}</h3>
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    pesanHeader: 'Vue Js'
+                },
+                computed: {
+                    balikPesanHeader(){
+                        return this.pesanHeader.split('').reverse('').join('');
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

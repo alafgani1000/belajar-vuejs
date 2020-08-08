@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Vue 003</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- tanpa v-for -->
+        <p><strong>Tanpa v-for</strong></p>
+        <p>{{ listOrangSantuy }}</p>
+
+        <!-- dengan v-for and v-if -->
+        <p><strong>Dengan v-for and v-if</strong></p>
+        <ul>
+            <li v-for="(orangSantuy, index) in listOrangSantuy" v-if="orangSantuy.nama.includes('N') || orangSantuy.nama.includes('n')">Property ke {{ index }}: {{ orangSantuy.nama }}
+                <ul>
+                    <li v-for="(mobil, jdex) in orangSantuy.koleksiMobil" v-if="(jdex != 'mobil1') && (jdex != 'mobil3')">Koleksi {{ jdex }}: {{ mobil }}</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p><strong>Penggunaan v-for, v-if and v-else</strong></p>
+        <ul>
+            <li v-for="(listOrang, index) in listOrangSantuy">
+                <span v-if="(listOrang.nama.length > 5)">
+                    Nama: <strong>{{ listOrang.nama }}</strong>
+                    <ul>
+                        <li v-for="(mobilnya, kdex) in listOrang.koleksiMobil" v-if="(kdex == 'mobil1')">Koleksi {{ kdex }}: {{ mobilnya }}</li>
+                    </ul>
+                </span>    
+                <span v-else-if="((listOrang.nama.length <= 4) && (listOrang.nama.includes('G') || listOrang.nama.includes('g')))">
+                    Nama: {{ listOrang.nama }}
+                    <ul>
+                        <li v-for="(mobilnya, kdex) in listOrang.koleksiMobil" v-if="(kdex == 'mobil2')">Koleksi {{ kdex }}: {{ mobilnya }}</li>
+                    </ul>
+                </span>   
+                <span v-else>
+                    Nama: {{ listOrang.nama }}
+                    <ul>
+                        <li v-for="(mobilnya, kdex) in listOrang.koleksiMobil" v-if="(kdex == 'mobil3')">Koleksi {{ kdex }}: {{ mobilnya }}</li>
+                    </ul>
+                </span>       
+            </li>
+        </ul>
+
+        <p><strong>Penguanaan v-for dan v-show</strong></p>
+        <ul>
+            <li v-for="(orang, i) in listOrangSantuy" v-show="(orang.nama.length > 5)">{{ orang.nama }}</li>
+        </ul>
+        <p>List Manual</p>
+        <ul>
+            <li>Test</li>
+            <ul>
+                <li>Test</li>
+            </ul>
+            <li>Test1</li>
+        </ul>
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                listOrangSantuy: [
+                    {
+                        nama: 'Agus',
+                        koleksiMobil: {
+                            mobil1: 'BMW', 
+                            mobil2: 'Mercedez', 
+                            mobil3: 'Lamborghini'
+                        }
+                    },
+                    {
+                        nama: 'Bambang', 
+                        koleksiMobil: { 
+                            mobil1: 'Maserati', 
+                            mobil2: 'Peugeot', 
+                            mobil3: 'Toyota' 
+                        }
+                    },
+                    {
+                        nama: 'Rian',
+                        koleksiMobil: {
+                            mobil1: 'Buggati',
+                            mobil2: 'Mercedez benz',
+                            mobil3: 'Subaru'
+                        }
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>

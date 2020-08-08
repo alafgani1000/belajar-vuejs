@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Vue 005</title>
+    <style>
+        h1 { 
+            font-size: 24px;
+            font-weight: bold; 
+        }
+        a {
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline; 
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+        <h1>Tooltip Attribute Binding</h1>
+        <a href="#" onClick="return false;" v-bind:title="tooltip">Arahkan Mouse di Sini</a>
+
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue ({    
+            el: '#app',
+            data: {
+                tooltip: 'Selamat Datang di Vue.js'
+            }
+        });
+    </script>
+</body>
+</html>

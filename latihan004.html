@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan Vue 004</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="nama in daftarNama">{{ nama }}</li>
+        </ul>
+        <input type="text" name="test" v-model="namaBaru"/>
+        <button v-on:click="tambahNama">Tambah nama</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                namaBaru: '',
+                daftarNama: ['Agus','Andi','Ali']
+            },
+            methods: {
+                tambahNama(){
+                    if(this.namaBaru.trim()){
+                        this.daftarNama.push(this.namaBaru);
+                        this.namaBaru = '';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

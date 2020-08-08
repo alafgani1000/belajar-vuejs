@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <!-- Menyisipkan Vuejs dari CDN -->
+  <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h3>Daftar Pekerjaan</h3>
+    <input type="text"  v-model:value="newTask"/>
+    <button @click="addTask">Add</button>
+    <ul>
+        <li v-for="item in todoList">
+            <s v-if="item.done">{{ item.task }}</s>
+            <b v-else>{{ item.task }}</b>
+        </li>
+    </u>
+</div>
+
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            newTask: "",
+            todoList: [
+                {"done": true, task: "belajar vue js"},
+                {"done": false, task: "latihan vue js"},
+                {"done": false, task: "membuat aplikasi dengan vue js"}
+            ]
+        },
+        methods:{
+            addTask: function(){
+                this.todoList.push({"done": false, task: this.newTask});
+                this.newTask = "";
+            }
+        }
+    })
+</script>
+</body>
+</html>
